@@ -1,38 +1,48 @@
-# Fantasy Kingdom Readme
+# Fantasy Kingdom
 
-### -- Kingdom --
+### Kingdom --
 
-- Gold: allows for factory/military upgrades and building
-- Happiness: determines likelihood of population revolts
-- Population: determines production levels?
+- Gold
+  - Allows for factory/military upgrades
+  - Allows building new buildings and factories
+- Happiness
+  - Determines likelihood of population revolts
+- Population
+  - Determines production levels?
 
 ### Building Types --
 
 - School
 
-  - increasese Kingdom education
+  - Increasese Kingdom education
   - Higher education means higher level factories (4+) can be built
+  - Small cost per turn
 
-- Bars
+- Bar
 
-  - increases Kingdom happiness
-  - higher hapiness mean less likely to revolt etc
+  - Increases Kingdom happiness
+  - Higher hapiness mean less likely to revolt etc
+  - Small cost per turn
 
 ### Factory Types --
 
 - Textiles
 
-  - increases Kingdom textiles supply
-  - increases kingdom health and happiness (by smaller amounts than other types)
+  - Increases Kingdom textiles supply
+  - Increases kingdom health AND happiness (by smaller amounts than other types)
+  - Cost per turn depends on level
 
 - Food
 
-  - increases kingdom health
-  - increases Kingdom food supply
-  - if health is too low population starts decreasing
+  - Increases kingdom health
+  - Increases Kingdom food supply
+  - If health is too low population starts decreasing
+  - Cost per turn depends on level
 
 ### Army --
 
 - increases Kingdom Military Power
-- higher military power means like likely to be invaded
-- higher military power means more likely to form alliances with other Kingdoms
+  - Higher MP means less likely to be invaded
+  - Higher MP means more likely to form alliances with other Kingdoms
+  - Cost increases with level
+  - High cost per turn
