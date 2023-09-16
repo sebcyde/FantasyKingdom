@@ -30,6 +30,10 @@ public:
   void upgradeBuilding(Building *building);
 
   // Other member functions as needed
+  void subtractGold(int amount)
+  {
+    gold -= amount;
+  }
 
 private:
   std::vector<Building *> buildings;

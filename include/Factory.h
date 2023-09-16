@@ -38,14 +38,6 @@ private:
   static const int TEXTILES_GENERATION_RATE = 5;
   static const int FOOD_GENERATION_RATE = 10;
 
-  static const int TEXTILES_UPGRADE_ONE_COST = 50;
-  static const int TEXTILES_UPGRADE_TWO_COST = 150;
-  static const int TEXTILES_UPGRADE_THREE_COST = 450;
-
-  static const int FOOD_UPGRADE__ONE_COST = 100;
-  static const int FOOD_UPGRADE__TWO_COST = 200;
-  static const int FOOD_UPGRADE__THREE_COST = 500;
-
   // Resource generation functions for different factory types
   void generateTextilesResources(Kingdom &kingdom);
   void generateFoodResources(Kingdom &kingdom);
@@ -86,30 +78,63 @@ private:
     }
   }
 
+  static const int TEXTILES_UPGRADE_ONE_COST = 50;
+  static const int TEXTILES_UPGRADE_TWO_COST = 150;
+  static const int TEXTILES_UPGRADE_THREE_COST = 450;
+
+  static const int FOOD_UPGRADE_ONE_COST = 100;
+  static const int FOOD_UPGRADE_TWO_COST = 200;
+  static const int FOOD_UPGRADE_THREE_COST = 500;
+
   void Factory::upgradeFactory(Kingdom &kingdom)
   {
-
     if (isActive())
     {
-      int UpgradeCost = 
+      int upgradeCost = 0; // Initialize the upgrade cost variable
 
-          // reduce kingdoms gold by amount depending on level and type (cost of upgrading)
-          if (Kingdom::getGold() -)
+      // Calculate the upgrade cost based on factory type and level
+      if (getType() == 1)
+      {
+        // Textiles factory upgrade cost calculation
+        if (getLevel() == 1)
+          upgradeCost = TEXTILES_UPGRADE_ONE_COST;
+        else if (getLevel() == 2)
+          upgradeCost = TEXTILES_UPGRADE_TWO_COST;
+        else if (getLevel() == 3)
+          upgradeCost = TEXTILES_UPGRADE_THREE_COST;
+      }
+      else if (getType() == 2)
+      {
+        // Food factory upgrade cost calculation
+        if (getLevel() == 1)
+          upgradeCost = FOOD_UPGRADE_ONE_COST;
+        else if (getLevel() == 2)
+          upgradeCost = FOOD_UPGRADE_TWO_COST;
+        else if (getLevel() == 3)
+          upgradeCost = FOOD_UPGRADE_THREE_COST;
+      }
 
-      // then increase factory level
+      // Check if kingdom has enough gold for the upgrade
+      if (kingdom.getGold() >= upgradeCost)
+      {
+        // Deduct the upgrade cost from the kingdom's gold
+        kingdom.subtractGold(upgradeCost);
+
+        // Increase the factory level
+        upgradeFactory();
+      }
     }
   }
-};
 
 #endif // FACTORY_H
 
-// Factory
+  // Factory
 
-//   - has a type, will determine what kind of resources it generates
-//   - can be inactive (due to surprise events like strikes/revolts from low Kingdom happiness)
-//   - can be upgraded to produce more resources per turn
-//
-// Factory Types:
-// 1 - textiles
-// 2 - food
-// 3 - ...
+  //   - has a type, will determine what kind of resources it generates
+  //   - can be inactive (due to surprise events like strikes/revolts from low Kingdom happiness)
+  //   - can be upgraded to produce more resources per turn
+  //
+  // Factory Types:
+  // 1 - textiles
+  // 2 - food
+  // 3 - ...
